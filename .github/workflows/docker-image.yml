@@ -52,7 +52,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Upload release artifacts
-      uses: Roang-zero1/github-upload-release-artifacts-action@vv
+      uses: Roang-zero1/github-upload-release-artifacts-action@v3
       with:
         args: "build/test-application-docker-export.tar"
       env:
