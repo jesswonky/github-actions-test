@@ -32,10 +32,10 @@ jobs:
 #         GHR_PATH: build/test-application-docker-export.tar
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Create release
-      uses: Roang-zero1/github-create-release-action@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Create release
+#       uses: Roang-zero1/github-create-release-action@v2
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Upload release artifacts
       uses: Roang-zero1/github-upload-release-artifacts-action@v2
