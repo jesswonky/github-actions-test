@@ -28,13 +28,13 @@ jobs:
         mkdir build
         docker save -o build/test-application-docker-export.tar test-application
         
-  release:
+  # release:
   
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
     
-    needs: [build]
+  #   needs: [build]
     
-    steps:
+  #   steps:
 
 #     - name: Create Github Release
 #       uses: fnkr/github-action-ghr@v1
