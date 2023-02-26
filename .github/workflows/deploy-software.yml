@@ -1,0 +1,26 @@
+name: Deploy Docker Application over SSH
+
+on:
+  workflow_dispatch:
+    inputs:
+      server:
+        description: Hostname of server to deploy to
+        required: true
+        type: string
+      version:
+        description: Release version of appliction
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      # - name: Pull docker tar archive from github release
+
+      # - name: Send docker tar archive to remote server via ssh
+
+      # - name: Import tar archive into docker 
+
+      - name: testing
+        run: echo  The tags are ${{ inputs.server }} with ${{ inputs.version }}
