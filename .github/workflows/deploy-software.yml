@@ -23,4 +23,8 @@ jobs:
       # - name: Import tar archive into docker 
 
       - name: testing
-        run: echo  The tags are ${{ inputs.server }} with ${{ inputs.version }}
+        run: echo  The tags are $SERVER with $VERSION
+        env:
+          SERVER: ${{ inputs.server }}
+          VERSION: ${{ inputs.version }}
+          
