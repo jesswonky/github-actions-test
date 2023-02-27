@@ -22,7 +22,7 @@ The deployment is run on a self hosted Github action runner that would be locate
 
 * [.github/workflows](.github/workflows/) - Github actions
 * [ansible](ansible/)  - Ansible code that is called from the Github action workflow
-* [application](appliction) - Sample docker image running nginx with static page
+* [application](application) - Sample docker image running nginx with static page
 
 ## Local Servers
 
