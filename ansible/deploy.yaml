@@ -1,0 +1,12 @@
+---
+- name: Testing Base Servers
+  hosts:
+    - deploy
+  remote_user: jessica
+  become: true
+  any_errors_fatal: true
+  
+  tasks:
+    - debug: 
+        msg: testing 
+      
