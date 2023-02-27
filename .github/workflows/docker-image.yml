@@ -9,13 +9,11 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
+    
     - name: Build Docker image
       run: docker build application --tag test-application:${{ github.ref_name }}
 

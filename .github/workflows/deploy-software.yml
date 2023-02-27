@@ -18,14 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install ansible collections
-        run: ansible-galaxy collection install -r requirements.yaml
+      - name: Install Ansible collections and setup dynamic inventory
+        run: |
+          ansible-galaxy collection install -r requirements.yaml
+          chmod +x ansible/inventory/github-env.py
         working-directory: ./ansible
 
-      - name: make ansible inventory script executable
-        run: chmod +x ansible/inventory/github-env.py
-
-      - name: ansible test
+      - name: Run Ansible to deploy software
         run: ansible-playbook -i inventory deploy.yaml
         working-directory: ./ansible
         env:
