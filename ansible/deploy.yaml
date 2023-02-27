@@ -7,6 +7,41 @@
   any_errors_fatal: true
   
   tasks:
-    - debug: 
-        msg: testing 
-      
+    - name: Download tar to local machine
+      get_url:
+        url: "https://github.com/jesswonky/github-actions-test/releases/download/{{ deploy_version }}/test-application-docker-export.tar"
+        dest: /var/tmp/test-application-docker-export.tar
+        owner: jessica
+      delegate_to: localhost
+      become: false
+
+    - name: Send tar file to remote host
+      copy:
+        src: /var/tmp/test-application-docker-export.tar
+        dest: /var/tmp/test-application-docker-export.tar
+
+    - name: import into docker images
+      community.docker.docker_image_load:
+        path: /var/tmp/test-application-docker-export.tar
+      register: result
+
+    - name: Print the loaded image names
+      ansible.builtin.debug:
+        msg: "Loaded the following images: {{ result.image_names | join(', ') }}"
+
+    # - name: Add tag latest to image
+    #   community.docker.docker_image:
+    #     name: "test-application:{{ deploy_version }}"
+    #     repository: test-application:latest
+    #     # As 'latest' usually already is present, we need to enable overwriting of existing tags:
+    #     force_tag: true
+    #     source: local
+
+    - name: deploy container
+      community.docker.docker_container:
+        name: test-application
+        image: "test-application:{{ deploy_version }}"
+        state: present
+        recreate: true
+        exposed_ports:
+          - 8080

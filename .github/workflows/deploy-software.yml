@@ -18,19 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - name: Pull docker tar archive from github release
-      #   run: wget https://github.com/jesswonky/github-actions-test/releases/download/${{ inputs.version }}/test-application-docker-export.tar
-
-      # - name: Send docker tar archive to remote server via ssh
-
-      # - name: Import tar archive into docker 
-
-      # - name: testing
-      #   run: echo  The tags are $SERVER with $VERSION
-      #   env:
-      #     SERVER: ${{ inputs.server }}
-      #     VERSION: ${{ inputs.version }}
-
       - name: make ansible inventory script executable
         run: chmod +x ansible/inventory/github-env.py
 
