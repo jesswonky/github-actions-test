@@ -1,8 +1,13 @@
-build-docker:
-	docker build -t test-application:1.0.0 application
+docker-build:
+	docker build -t test-application application
 
-run-local-docker-test:
-	docker run -it --rm -p 8080:80 test-application:1.0.0
+docker-run-local-test:
+	docker run -it --rm -p 8080:80 test-application
+
+docker-save:
+	mkdir build
+	docker save -o build/test-application-docker-export.tar test-application
 
 clean:
-	docker rmi test-application:1.0.0
+	rm -rf build
+	docker rmi test-application

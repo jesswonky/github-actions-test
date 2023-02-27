@@ -29,19 +29,11 @@
       ansible.builtin.debug:
         msg: "Loaded the following images: {{ result.image_names | join(', ') }}"
 
-    # - name: Add tag latest to image
-    #   community.docker.docker_image:
-    #     name: "test-application:{{ deploy_version }}"
-    #     repository: test-application:latest
-    #     # As 'latest' usually already is present, we need to enable overwriting of existing tags:
-    #     force_tag: true
-    #     source: local
-
     - name: deploy container
       community.docker.docker_container:
         name: test-application
         image: "test-application:{{ deploy_version }}"
-        state: present
+        state: started
         recreate: true
-        exposed_ports:
-          - 8080
+        ports:
+          - 8080:80
